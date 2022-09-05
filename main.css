@@ -1,0 +1,168 @@
+body {
+  font-family: 'Roboto';
+  font-size: 12px;
+}
+
+.video-player {
+  width: 540px;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  clip-path: path(
+    'M 22 8 L 270 0 L 518 8 Q 540 8 540 30 V 266 Q 540 288 518 288 M 518 288 L 270 296 L 22 288 Q 0 288 0 266 V 30 Q 0 8 22 8'
+  );
+  background: black;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  bottom: 25px;
+  left: 2px;
+  transition: opacity 0.2s;
+}
+
+.control-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+  cursor: pointer;
+  outline: none;
+}
+
+.control-button:hover {
+  opacity: 1;
+}
+
+.control-button.play-button {
+  height: 40px;
+  width: 40px;
+}
+
+.control-button.sound-button {
+  height: 40px;
+  width: 40px;
+}
+
+.control-button.fullscreen-button {
+  height: 35px;
+  width: 35px;
+}
+
+.control-button svg {
+  stroke: #cdcdd1;
+}
+
+.time {
+  color: #fff;
+  margin-right: 20px;
+}
+
+.time-visualizer-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Sound visualization */
+
+@keyframes quiet {
+  25% {
+    transform: scaleY(0.6);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  75% {
+    transform: scaleY(0.8);
+  }
+}
+
+@keyframes normal {
+  25% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  75% {
+    transform: scaleY(0.6);
+  }
+}
+
+@keyframes loud {
+  25% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  75% {
+    transform: scaleY(1.2);
+  }
+}
+
+.visualizer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-right: 20px;
+  --boxSize: 2px;
+  --gutter: 2px;
+  width: calc((var(--boxSize) + var(--gutter)) * 5);
+}
+
+.sound {
+  transform: scaleY(0.4);
+  height: 100%;
+  width: var(--boxSize);
+  background: #fff;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  border-radius: 8px;
+}
+
+.bar1 {
+  height: 10px;
+}
+
+.bar2 {
+  height: 20px;
+}
+
+.bar3 {
+  height: 30px;
+}
+
+.bar4 {
+  height: 40px;
+}
+
+.bar5 {
+  height: 35px;
+}
+
+.bar6 {
+  height: 25px;
+}
+
+.animation-quiet {
+  animation-name: quiet;
+}
+
+.animation-normal {
+  animation-name: normal;
+}
+
+.animation-loud {
+  animation-name: loud;
+}
